@@ -1,0 +1,11 @@
+{
+  "name": "wikisearch",
+  "version": "1.0.1",
+  "description": "A small application for searching Wikipedia/wiki sites for particular resources.",
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-requirejs": "latest",
+    "grunt-contrib-watch": "latest"
+  }
+}
