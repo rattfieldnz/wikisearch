@@ -4,13 +4,9 @@
   "dependencies": {
     "jquery": "latest",
     "bootstrap": "latest",
-    "backbone": "latest",
-    "underscore": "latest",
-    "html5shiv": "^3.7.3",
-    "respond": "respondJS#^1.4.2",
-    "requirejs": "^2.3.2",
-    "backbone.marionette": "marionette#^3.1.0",
-    "backbone.babysitter": "^0.1.12",
-    "backbone.wreqr": "^1.4.0"
+    "html5shiv": "latest",
+    "respond": "latest",
+    "requirejs": "latest",
+    "font-awesome": "^4.7.0"
   }
 }

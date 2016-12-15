@@ -4,6 +4,7 @@
   "description": "A small application for searching Wikipedia/wiki sites for particular resources.",
   "devDependencies": {
     "grunt": "latest",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-less": "latest",
     "grunt-contrib-requirejs": "latest",
     "grunt-contrib-watch": "latest"
