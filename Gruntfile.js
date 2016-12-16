@@ -16,7 +16,7 @@ module.exports = function(grunt) {
             if(/(.*)js\/modules\/(.*)/.test(path)) return contents.replace(/console.log(.*);/g, ';');
             return contents;
         }
-    }
+    };
 
     //Initializing the configuration object
     grunt.initConfig({
@@ -41,6 +41,14 @@ module.exports = function(grunt) {
                     //compiling base.less into main.min.css
                     "app/dist/css/main.min.css": "app/styles/base.less"
                 }
+            }
+        },
+        copy: {
+            files: {
+                cwd: 'app/scripts/vendor/font-awesome/fonts',  // set working folder / root to copy
+                src: '**/*',           // copy all files and subfolders
+                dest: 'app/fonts',    // destination folder
+                expand: true           // required when using cwd
             }
         },
         requirejs: {
@@ -71,6 +79,8 @@ module.exports = function(grunt) {
     });
 
     // Plugin loading
+
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-watch');

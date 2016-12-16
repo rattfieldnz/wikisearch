@@ -4,10 +4,17 @@
   "dependencies": {
     "jquery": "latest",
     "bootstrap": "latest",
+<<<<<<< HEAD
     "backbone": "latest",
     "underscore": "latest",
     "html5shiv": "latest",
     "respond": "latest",
     "requirejs": "latest"
+=======
+    "html5shiv": "latest",
+    "respond": "latest",
+    "requirejs": "latest",
+    "font-awesome": "^4.7.0"
+>>>>>>> b069eddeebaee950347a3ec4d93af8e63386dfae
   }
 }
