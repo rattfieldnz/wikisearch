@@ -21,6 +21,12 @@
     <h1>WikiSearch - Knowledge via Wikis</h1>
     <p>Enter some keywords in the search box below, and begin your quest for knowledge!</p>
     <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    <hr>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#search">Search</a></li>
+    </ul>
+    <div id="main"></div>
   </div>
 </div>
 
@@ -32,6 +38,15 @@
   </footer>
 </div> <!-- /container -->
 
-<script data-main="app/scripts/main.js?v=1.0.2" src="/app/scripts/vendor/requirejs/require.js"></script>
+<script src="app/scripts/vendor/jquery/dist/jquery.min.js"></script>
+<script src="app/scripts/vendor/underscore/underscore-min.js"></script>
+<script src="app/scripts/vendor/backbone/backbone-min.js"></script>
+<script src="app/scripts/app.js"></script>
+<script src="app/scripts/models/wiki.js"></script>
+<script src="app/scripts/collections/wikis.js"></script>
+<script src="app/scripts/views/wikiView.js"></script>
+<script src="app/scripts/views/home.js"></script>
+<script src="app/scripts/views/search.js"></script>
+<script src="app/scripts/routers/router.js"></script>
 </body>
 </html>
