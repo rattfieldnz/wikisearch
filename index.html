@@ -11,6 +11,64 @@
         <title>WikiSearch - Knowledge via Wikis</title>
 
         <link rel="stylesheet" media="screen" href="app/styles/styles.css" type="text/css" />
+
+        <script src="app/scripts/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="app/scripts/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script>
+            $(function($) {
+
+                /*$("#keyword-phrase").keyup(function(){
+                    let q = $("#keyword-phrase").val();
+                    getData(q);
+                });*/
+
+                $("#wiki-search").submit(function(event){
+                    var q = $("#keyword-phrase").val();
+                    var quantityResults = $("#limit-results").val();
+                    getData(q, quantityResults);
+                    event.preventDefault();
+                });
+
+                function getData(query, quantityResults){
+                    $.getJSON("http://en.wikipedia.org/w/api.php?callback=?",
+                        {
+                            srsearch: query,
+                            format: "json",
+                            action: "query",
+                            list: "search",
+                            srlimit: quantityResults,
+                            srinterwiki: "1",
+                            prop: "images|extracts",
+                        },
+                        function(data) {
+                            $("#search-results").empty();
+                            if(data.query !== 'undefined' && data.query != null){
+                                $("#search-results").append("<p>Results for <b>" + query + "</b></p>");
+                                $("#search-results").append("<ol id='list'></ol>");
+
+                                $.each(data.query.search, function(i,item){
+                                    var info;
+                                    if(item.extract !== 'undefined' && item.extract != null){
+                                        info = item.extract;
+                                    }
+                                    else{
+                                        info = item.snippet;
+                                    }
+                                    $("#list").append(
+                                        "<li><div><a href='http://en.wikipedia.org/wiki/" +
+                                        encodeURIComponent(item.title) +
+                                        "' target='_blank' title='"+ item.title +"'>" +
+                                        item.title + "</a><br>"
+                                        + info + " ... <small>(<a href='http://en.wikipedia.org/wiki/" +
+                                        encodeURIComponent(item.title) +
+                                        "' target='_blank' title='"+ "See more of \""
+                                        + item.title + "\"'>"+ "See more" + "</a>).</small><br><br></div></li>");
+                                });
+                            }
+                        });
+                }
+            });
+        </script>
     </head>
     <body>
 
@@ -18,15 +76,22 @@
             <div class="container">
                 <h1>WikiSearch - Knowledge via Wikis</h1>
                 <p>Enter something in the search box below, and begin your quest for knowledge!</p>
-                <form id="wiki-search" method="get">
-                    <div id="keyword-phrase-group" class="form-group">
-                        <label for="keyword-phrase">Keyword/Phrase</label>
+                <form id="wiki-search" class="form-inline" method="get">
+                    <div class="form-group">
+                        <label for="keyword-phrase" class="sr-only">Keyword/Phrase</label>
                         <div class="search">
-                            <input type="text" class="form-control" name="keyword-phrase" id="keyword-phrase" placeholder="Cricket">
+                            <input type="text" class="form-control" name="keyword-phrase" id="keyword-phrase" placeholder="Enter something here...">
                         </div>
                         <!-- errors will go here -->
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg">Submit <span class="fa fa-arrow-right"></span></button>
+                    <div class="form-group">
+                        <label for="limit-results">Limit Results</label>
+                        <input type="number" class="form-control" name="limit-results" id="limit-results" placeholder="10" value="10" min="1" max="500">
+
+                    </div>
+                    <div class="form-group">
+                        <button id="get-wiki-items" type="submit" class="btn btn-primary btn-lg">Submit <span class="fa fa-arrow-right"></span></button>
+                    </div>
                 </form>
             </div>
             <div class="container" id="search-results">
@@ -39,7 +104,5 @@
                 <p>&copy; 2016 Company, Inc.</p>
             </footer>
         </div> <!-- /container -->
-
-        <script data-main="app/scripts/main.js?v=1.0.2" src="/app/scripts/vendor/requirejs/require.js"></script>
     </body>
 </html>
