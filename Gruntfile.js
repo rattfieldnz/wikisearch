@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
         mainConfigFile: 'app/scripts/main.js',
         baseUrl: 'app/scripts',
-        include: ['main'],
+        include: ['main', 'js/app'],
         out: 'app/dist/js/main.min.js',
         removeCombined: false,
         findNestedDependencies: true,
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
             files: {
                 cwd: 'app/scripts/vendor/font-awesome/fonts',  // set working folder / root to copy
                 src: '**/*',           // copy all files and subfolders
-                dest: 'app/fonts',    // destination folder
+                dest: 'app/dist/fonts',    // destination folder
                 expand: true           // required when using cwd
             }
         },

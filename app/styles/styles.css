@@ -9074,3 +9074,13 @@ button.close {
 body {
   background-color: white;
 }
+.results {
+  margin-top: 1em;
+}
+.results .text-center {
+  text-align: center;
+}
+.results span.query {
+  text-decoration: underline;
+  font-weight: bold;
+}
